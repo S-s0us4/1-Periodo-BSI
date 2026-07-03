@@ -1,139 +1,51 @@
-<!doctype html> 
-<html lang="pt-BR"> 
-  <head> 
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>Bootstrap demo</title> 
-    <link 
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-rel="stylesheet"> 
-  </head> 
-  <body> 
-    <div class="container"> 
-        <h1>Exemplo Bootstrap</h1> 
- 
-        <div class="alert alert-warning" role="alert"> 
-            <strong>Aviso: </strong> você pode melhorar esse site! 
-        </div> 
- 
-        <button type="button" class="btn btn-primary">Primary</button> 
-        <button type="button" class="btn btn-success">Success</button> 
-        <button type="button" class="btn btn-danger">Danger</button> 
-        <button type="button" class="btn btn-warning">Warning</button> 
-        <button type="button" class="btn btn-info">Info</button>  
-    </div> 
-    <div class="container"> 
-        <h1>Exemplo Bootstrap</h1> 
- 
-        <div class="alert alert-success" role="alert"> 
-            <strong>Aviso: </strong> você pode melhorar esse site! 
-        </div> 
- 
-        <button type="button" class="btn btn-primary">Primary</button> 
-        <button type="button" class="btn btn-success">Success</button> 
-        <button type="button" class="btn btn-danger">Danger</button> 
-        <button type="button" class="btn btn-warning">Warning</button> 
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-success">Verde</button>    
-    </div> 
-    <br>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Prova Web 3</title>
+</head>
+<body>
     <div class="container">
-       <label for="range2" class="form-label">QUANTO DAMON É GOSTOSO</label>
-       <input type="range" class="form-range" min="1" max="10" step="0.5" value="10" id="range2">
-       <output for="range2" id="rangeValue" aria-hidden="true"></output>
+        <div class="oneplan">
+            <div class="plan">
+                <h2 class="plano">Plano 1</h2>
+                <h2 class="valor">R$ 20,00</h2>
+                <h3 class="tipo">Plano Básico para usuários iniciantes</h3>
+            </div>
+            <div class="media">
+                <h3 class="cara">Característica 1</h3>
+                <h3 class="cara">Característica 2</h3>
+            </div>
+        </div>
+        <div class="twoplan">
+            <div class="plan">
+                <h2 class="plano">Plano 2</h2>
+                <h2 class="valor">R$ 80,00</h2>
+                <h3 class="tipo">Recursos completos para usuários avançados</h3>
+            </div>
+            <div class="media">
+            <h3 class="cara">Característica 1</h3>
+            <h3 class="cara">Característica 2</h3>
+            <h2 class="negrito">Característica 3</h2>
+            <h2 class="negrito">Característica 4</h2>
+        </div>
+        </div>
+        <div class="treeplan">
+            <div class="plan">
+                <h2 class="plano">Plano 3</h2>
+                <h2 class="valor">R$ 150,00</h2>
+                <h3 class="tipo">Recursos completos e ilimitados para empresas</h3>
+            </div>
+            <div class="media">
+                <h3 class="cara">Característica 1</h3>
+                <h3 class="cara">Característica 2</h3>
+                <h3 class="cara">Característica 3</h3>
+                <h3 class="cara">Característica 4</h3>
+                <h2 class="negrito">Característica 5</h2>
+            </div>
+        </div>
     </div>
- 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-    </script> 
-    <div class="container">
-    <div class="card" style="width: 18rem;">
-    <img src="https://i.pinimg.com/originals/17/e6/b1/17e6b198bf5f6fcdbb9cd85363503ca8.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div>
-    <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-            <button type="button" class="btn btn-danger">Danger</button> 
-    </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #4
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">DEAN GOSTOSO</span>
-        </button>
-      </div>
-</div>
-    </div>
-    <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://tse4.mm.bing.net/th/id/OIP.5hWBpSV-w4TIPwSRZUwlvAHaEH?rs=1&pid=ImgDetMain&o=7&rm=3" class="d-block w-100" alt="">
-      
-    </div>
-    <div class="carousel-item">
-      <img src="https://tse2.mm.bing.net/th/id/OIP.SJm_o17-LLCv_SFGA4VFgwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://noticiasdatv.uol.com.br/media/_versions/noticias/2014/1381177374alg-dexter_fixed_medium.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://th.bing.com/th/id/R.d7778f8a2801892e573681e2f8d30e81?rik=dSZ0G928m4N%2faQ&pid=ImgRaw&r=0" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://th.bing.com/th/id/R.1c0841a1a274d372a12890f10e7a102e?rik=UqpH0s2gu7VyVw&pid=ImgRaw&r=0" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">DEAN GOSTOSO</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-  </body> 
-</html> 
+</body>
+</html>
