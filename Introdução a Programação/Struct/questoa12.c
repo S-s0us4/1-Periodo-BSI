@@ -57,6 +57,32 @@ void limpaBuffer(){
         ch = getchar();
     }while (ch!='\n');
 }
+void excluirFuncionario(Funcionario vf[], int *qtdFunc){
+    int matricula;
+    int i, j;
+
+    printf("Matricula do funcionario: ");
+    scanf("%d", &matricula);
+
+    for(i = 0; i < *qtdFunc; i++){
+
+        if(vf[i].matricula == matricula){
+
+            for(j = i; j < *qtdFunc - 1; j++){
+
+                vf[j] = vf[j + 1];
+
+            }
+
+            (*qtdFunc)--;
+
+            printf("Funcionario excluido com sucesso!\n");
+            return;
+        }
+    }
+
+    printf("Funcionario nao encontrado!\n");
+}
 
 int pesquisaDepartamento(TDepartamento v[], int ultimaPosicao,int cod){
     int i;
