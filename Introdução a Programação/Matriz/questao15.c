@@ -18,75 +18,208 @@ a maior quantidade de itens.
 cada uma das 4 categorias (soma de todas as revendedoras).
 4. Campeã de Vendas: O nome da revendedora que obteve o maior faturamento total em Reais
 (R$).*/
-
 #include <stdio.h>
 #include <string.h>
+
 #define TAM 15
 #define CAT 4
 
-void limpaBuffer(){
-    int c;
-    do{
-        c=getchar();
-    }while(c!='\n');
-}
-void lerRevendedoras(char vNomes[TAM][100],int tamanho){
-    int i,k,achou=0;
-    do{
-        printf("\nForneça o nome da revendedora :\n");
-        scanf("%s",&vNomes[i]);
-            for(k=0;k<i;k++){
-                if(strcmp(vNomes[k],vNomes[i])==0){
-            printf("\nNome já cadastrado!\n");
-            achou=1;
-        }else{
-            strcpy(vNomes[i],vNomes[k]);
-        }
+void lerRevendedoras(char vNomes[TAM][100]){
+    int i, j, existe;
+
+    for(i=0; i<TAM; i++){
+
+        do{
+            existe = 0;
+
+            printf("Nome da revendedora %d: ", i+1);
+            scanf("%s", vNomes[i]);
+
+            for(j=0; j<i; j++){
+                if(strcmp(vNomes[i], vNomes[j]) == 0){
+                    printf("Nome ja cadastrado! Digite outro.\n");
+                    existe = 1;
+                    break;
+                }
             }
-        
-    }while(achou);
+
+        }while(existe);
+    }
 }
-void lerPreco(float vPreco[CAT],int cat,char vCategorias[CAT][100]){
+
+void lerPreco(float vPreco[CAT], char vCategorias[CAT][100]){
     int i;
-    for(i=0;i<CAT;i++){
-        printf("\nForneça o preço médio da categoria %s :\n",vCategorias[i]);
-        scanf("%f",&vPreco[i]);
+
+    for(i=0; i<CAT; i++){
+        printf("Preco medio da categoria %s: ", vCategorias[i]);
+        scanf("%f", &vPreco[i]);
     }
 }
-void lerVendas(float mat[TAM][CAT],int tamanho,int cat,char vNomes[TAM][100],float vPreco[CAT],char vCategorias[CAT][100]){
-    int lin,col;
-    for(lin=0;lin<TAM;lin++){
-        printf("\nVendedora %s\n",vNomes[lin]);
-            for(col=0;col<CAT;col++){
-                printf("\nQuantidade vendida de %s :\n",vCategorias[col]);
-                scanf("%f",&mat[lin][col]);
-            }
+
+void lerVendas(float mat[TAM][CAT],
+               char vNomes[TAM][100],
+               char vCategorias[CAT][100]){
+
+    int lin, col;
+
+    for(lin=0; lin<TAM; lin++){
+
+        printf("\nRevendedora: %s\n", vNomes[lin]);
+
+        for(col=0; col<CAT; col++){
+
+            printf("Quantidade vendida de %s: ", vCategorias[col]);
+            scanf("%f", &mat[lin][col]);
+
+        }
     }
 }
-void faturamento(float mat[TAM][CAT],int tamanho,int cat,char vNomes[TAM][100],float vPreco[CAT]){
-    int lin,col;
+
+void faturamentoRevendedora(float mat[TAM][CAT],
+                            float vPreco[CAT],
+                            char vNomes[TAM][100]){
+
+    int lin, col;
     float total;
 
-    for(lin=0;lin<tamanho;lin++){
-        total=0;
-        for(col=0;col<CAT;col++){
-            total+=mat[lin][col]*vPreco[col];
+    printf("\n========== FATURAMENTO POR REVENDEDORA ==========\n");
+
+    for(lin=0; lin<TAM; lin++){
+
+        total = 0;
+
+        for(col=0; col<CAT; col++){
+
+            total += mat[lin][col] * vPreco[col];
+
         }
-        printf("\n%s - %2.f",vNomes[lin],total);
+
+        printf("%s -> R$ %.2f\n", vNomes[lin], total);
+
     }
+
 }
+
+void destaqueCategoria(float mat[TAM][CAT],
+                       char vNomes[TAM][100],
+                       char vCategorias[CAT][100]){
+
+    int lin, col;
+    int maior;
+
+    printf("\n========== DESTAQUE POR CATEGORIA ==========\n");
+
+    for(col=0; col<CAT; col++){
+
+        maior = 0;
+
+        for(lin=1; lin<TAM; lin++){
+
+            if(mat[lin][col] > mat[maior][col]){
+
+                maior = lin;
+
+            }
+
+        }
+
+        printf("%s -> %s (%.0f itens)\n",
+               vCategorias[col],
+               vNomes[maior],
+               mat[maior][col]);
+
+    }
+
+}
+
+void totalCategoria(float mat[TAM][CAT],
+                    char vCategorias[CAT][100]){
+
+    int lin, col;
+    float soma;
+
+    printf("\n========== TOTAL DE ITENS POR CATEGORIA ==========\n");
+
+    for(col=0; col<CAT; col++){
+
+        soma = 0;
+
+        for(lin=0; lin<TAM; lin++){
+
+            soma += mat[lin][col];
+
+        }
+
+        printf("%s -> %.0f itens\n",
+               vCategorias[col],
+               soma);
+
+    }
+
+}
+
+void campeaVendas(float mat[TAM][CAT],
+                  float vPreco[CAT],
+                  char vNomes[TAM][100]){
+
+    int lin, col;
+    int campea = 0;
+
+    float maior = 0;
+    float total;
+
+    for(lin=0; lin<TAM; lin++){
+
+        total = 0;
+
+        for(col=0; col<CAT; col++){
+
+            total += mat[lin][col] * vPreco[col];
+
+        }
+
+        if(total > maior){
+
+            maior = total;
+            campea = lin;
+
+        }
+
+    }
+
+    printf("\n========== CAMPEA DE VENDAS ==========\n");
+    printf("Revendedora: %s\n", vNomes[campea]);
+    printf("Faturamento: R$ %.2f\n", maior);
+
+}
+
 int main(){
 
-    char vNomes[TAM][100],
-    vCategorias[CAT][100]={"Perfumaria","Maquiagem","Cuidados com a Pele","Cabelos"};
+    char vNomes[TAM][100];
+
+    char vCategorias[CAT][100] = {
+        "Perfumaria",
+        "Maquiagem",
+        "Cuidados com a Pele",
+        "Cabelos"
+    };
 
     float vPreco[CAT];
     float mat[TAM][CAT];
 
-    
-    lerRevendedoras(vNomes,TAM);
-    lerPreco(vPreco,CAT,vCategorias);
-    lerVendas(mat,TAM,CAT,vNomes,vPreco,vCategorias);
+    lerRevendedoras(vNomes);
+
+    lerPreco(vPreco, vCategorias);
+
+    lerVendas(mat, vNomes, vCategorias);
+
+    faturamentoRevendedora(mat, vPreco, vNomes);
+
+    destaqueCategoria(mat, vNomes, vCategorias);
+
+    totalCategoria(mat, vCategorias);
+
+    campeaVendas(mat, vPreco, vNomes);
 
     return 0;
 }
