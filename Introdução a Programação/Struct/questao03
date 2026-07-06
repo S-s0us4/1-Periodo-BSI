@@ -1,0 +1,71 @@
+/*Questão 03
+Cadastre 8 alunos com:
+• matrícula; 
+• nome; 
+• curso; 
+• média final. 
+Leia uma matrícula e informe se o aluno foi encontrado.
+Caso seja encontrado, exiba todos os seus dados*/
+
+#include <stdio.h>
+#include <string.h>
+#define NUMERO_ALUNOS 8
+typedef struct{
+    int matricula;
+    char nome[100];
+    char curso[100];
+    float media;
+}TAlunos;
+
+void limpaBuffer(){
+    int ch;
+    do{
+        ch=getchar();
+    }while(ch!='\n');
+}
+
+int main(){
+    TAlunos va[NUMERO_ALUNOS];
+    int i,tam,matriculaA,achou=0;
+    
+    for(i=0;i<NUMERO_ALUNOS;i++){
+        printf("\nForneça a matrícula:\n");
+        scanf("%d",&va[i].matricula);
+        limpaBuffer();
+        printf("\nForneça o nome:\n");
+        fgets(va[i].nome,100,stdin);
+        tam = strlen(va[i].nome);
+        if(va[i].nome[tam-1]=='\n'){
+            va[i].nome[tam-1]='\0';
+        }else{
+            limpaBuffer();
+        }
+        printf("\nForneça o curso:\n");
+        fgets(va[i].curso,100,stdin);
+        tam = strlen(va[i].curso);
+        if(va[i].curso[tam-1]=='\n'){
+            va[i].curso[tam-1]='\0';
+        }else{
+            limpaBuffer();
+        }
+        printf("\nForneça a média:\n");
+        scanf("%f",&va[i].media);
+        limpaBuffer();
+    }
+    printf("\nForneça a matrícula que deseja procurar :\n");
+    scanf("%d",&matriculaA);
+    for(i=0;i<NUMERO_ALUNOS;i++){
+        if(matriculaA==va[i].matricula){
+            achou=1;
+            printf("\nEncontrado !!\n");
+            printf("\nNome:%s\n",va[i].nome);
+            printf("\nCurso:%s\n",va[i].curso);
+            printf("\nMédia:%f\n",va[i].media);
+        }
+        break;
+    }
+    if(achou==0){
+        printf("\nMatrícula não encontrada !!\n");
+    }
+    return 0;
+}
