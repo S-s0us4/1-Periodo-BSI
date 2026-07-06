@@ -1,7 +1,7 @@
 /*Questão 02
 Faça um programa que:
 1. Leia a dimensão N de uma matriz quadrada (1 ≤ N ≤ 10). Valide a entrada.
-2. Preencha cada posição da matriz M com valores fornecidos pelo usuário.
+2. Preencha cada posição da matriz M com com valores fornecidos pelo usuário.
 Calcule e imprima:
 • A soma dos elementos da diagonal principal(onde i = j)
 • A soma dos elementos da diagonal secundária (onde i + j = N - 1)
@@ -25,49 +25,29 @@ DIAGONAL SECUNDÁRIA (i + j = 3): elementos (6, -1, 10, 3)
 Soma da diagonal secundária = 18*/
 
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-#define ORDEM 10
+int main(){
 
-int main (){
-    int mat[ORDEM][ORDEM],lin,col,
-        n,somaPrincipal=0,somaSecundaria=0;
-    do{
-        printf("\nForneça a ordem da matriz (1 <= ordem <= 10):\n");
-        scanf("%d",&n);
-        if(n<1 || n>ORDEM){
-            printf("\nO tamanho da matriz está incorreto\n");
-        }
-    }while(n<1 || n>ORDEM);
-    srand(time(NULL));
-    //Preenche Matriz
-    for(lin=0;lin<n;lin++){
-        for(col=0;col<n;col++){
-            mat[lin][col]=rand()%100;
-            //Verificando se é a diagonal secundaria
-            if(lin+col==n-1){
-                somaSecundaria+=mat[lin][col];
+    int mat[100][100];
+    int n,lin,col,somaP,somaS;
+
+    printf("\nForneça o tamanho da matriz :\n");
+    scanf("%d",&n);
+
+    if(n<1 || n>10){
+        printf("\nValor inválido!\n");
+        return 1;
+    }else{
+        for(lin=0;lin<n;lin++){
+            for(col=0;col<n;col++){
+                printf("\nForneça o valor para a posição [%d][%d]:\n",lin,col);
+                scanf("%d",&mat[lin][col]);
             }
         }
-    }
-    //Imprime Matriz
-    for(lin=0;lin<n;lin++){
-        for(col=0;col<n;col++){
-            //Verificando se é uma posição da diagonal principal
-            if(lin==col){
-                printf("[%d]\t",mat[lin][col]);
-                somaPrincipal+=mat[lin][col];
-            }
-            else
-                if(lin+col==n-1){
-                     printf("(%d)\t",mat[lin][col]);
-                }
-                else
-                    printf("%d\t",mat[lin][col]);
+        if(lin==col){
+            printf("\nDiagonal principal: %d\t",mat[lin][col]);
+            somaP+=mat[lin][col];
         }
-        printf("\n");
     }
-    printf("\nSoma da Diagonal Principal =%d\n",somaPrincipal);
-    printf("\nSoma da Diagonal Secundária =%d\n",somaSecundaria);
+
     return 0;
 }
