@@ -57,31 +57,32 @@ void limpaBuffer(){
         ch = getchar();
     }while (ch!='\n');
 }
-void excluirFuncionario(Funcionario vf[], int *qtdFunc){
-    int matricula;
-    int i, j;
-
-    printf("Matricula do funcionario: ");
-    scanf("%d", &matricula);
-
-    for(i = 0; i < *qtdFunc; i++){
-
-        if(vf[i].matricula == matricula){
-
-            for(j = i; j < *qtdFunc - 1; j++){
-
-                vf[j] = vf[j + 1];
-
+int excluirDepartemento(TDepartamento vd[],int *ultimaPosD,TFuncionario vf[],int *ultimaPosF){
+    int indice,i,cod;
+    if(*ultimaPosD==-1)
+        return 0;
+    else{    
+        printf("Forneça o código do departamento a ser excluído:");
+        scanf("%d",&cod);
+        indice =pesquisaDepartamento(vd,ultimaPosD,cod);
+        if(indice!=-1){
+            vd[indice]=vd[*ultimaPosD];
+            *ultimaPosD=*ultimaPosD-1;
+            //excluindo todos os funcionários associados ao departamento excluído
+            i=0;
+            while(i<=*ultimaPosF){
+                if(vf[i].codDep==cod){
+                    vf[i]=vf[*ultimaPosF];
+                    *ultimaPosF = *ultimaPosF-1;
+                }
+                else
+                    i++;
             }
-
-            (*qtdFunc)--;
-
-            printf("Funcionario excluido com sucesso!\n");
-            return;
+            return 1;
         }
+        else
+            return 0;
     }
-
-    printf("Funcionario nao encontrado!\n");
 }
 
 int pesquisaDepartamento(TDepartamento v[], int ultimaPosicao,int cod){
